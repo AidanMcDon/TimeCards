@@ -76,6 +76,13 @@ public class DeckManager : MonoBehaviour
         hand.Clear();
     }
 
+    public void DiscardCard(CardObject card){
+        discard.Enqueue(card.card);
+        hand.Remove(card);
+        Destroy(card.gameObject);
+        cardContainer.OnDiscard();
+    }
+
     public void DrawHand(int amount){
         for (int i = 0; i < amount; i++){
             DrawCard();

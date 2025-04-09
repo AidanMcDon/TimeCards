@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Barbarian
   m_EditorClassIdentifier: Assembly-CSharp::UnitCard
   cardType: 0
-  cardName: Barbarian
+  cardName: Bike
   description: a dependable affordable unit
   cost: 1
   stats:

@@ -21,5 +21,14 @@ public class DebugScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             deckManager.ResetDeck();
         }
+
+        if(Input.touchCount > 0){
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began){
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                cardContainer.ClickCard(touchPos);
+                Debug.Log("Touch detected at: " + touchPos);
+            }
+        }
     }
 }

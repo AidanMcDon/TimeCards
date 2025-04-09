@@ -14,4 +14,17 @@ public class LevelManager : MonoBehaviour
     {
         
     }
+
+    enum GameState
+    {
+        Paused,
+        Running,
+        PlayingCard,
+        Shop
+    }
+    private GameState gameState = GameState.Paused;
+
+    public bool ActivateCard(Card card){
+        return true;
+    }
 }
