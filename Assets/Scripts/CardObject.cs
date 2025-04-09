@@ -28,4 +28,5 @@ public class CardObject : MonoBehaviour
             Debug.LogError("Card is not a UnitCard");
         }
     }
+    
 }

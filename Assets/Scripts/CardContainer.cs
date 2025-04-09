@@ -159,6 +159,7 @@ public class CardContainer : MonoBehaviour
             previousClosestCardIndex = closestCardIndex;
         }else{
             //the card has been activated
+            
             ActivateCard(closestCardIndex);
         }
     }
@@ -186,7 +187,9 @@ public class CardContainer : MonoBehaviour
         CardObject cardObject = deckManager.hand[cardIndex].GetComponent<CardObject>();
         if(cardObject != null){
             //activate the card
+            Debug.Log("Activating card: " + cardObject.card.cardName);
             if(levelManager.ActivateCard(cardObject.card)){
+
                 deckManager.DiscardCard(cardObject);
             }
         }else{

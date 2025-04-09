@@ -21,7 +21,15 @@ public class AgentDriver : MonoBehaviour
         if(levelManager == null){
             Debug.LogError("LevelManager not found in the scene.");
         }
+        StartCoroutine(IdleInZone());
     }
+
+    void Update()
+    {
+
+    }
+
+
 
     public void ApplyZone(Transform zone){
         this.zone = zone;
