@@ -6,6 +6,7 @@ public class CardContainer : MonoBehaviour
     [SerializeField] private float handAreaLength = 10f;
     private DeckManager deckManager;
 
+    private int closestCardIndex, previousClosestCardIndex;
     void Awake()
     {
         deckManager = FindFirstObjectByType<DeckManager>();
@@ -18,6 +19,7 @@ public class CardContainer : MonoBehaviour
     void Update()
     {
         MoveCardsToPositions();
+        PeekClosestCard();
     }
 
     List<Vector2> positions = new List<Vector2>();
@@ -38,12 +40,18 @@ public class CardContainer : MonoBehaviour
                     cardObject.transform.localPosition = positions[i];
                 }
                 //set the z position to help with proper ordering of cards
-                cardObject.transform.localPosition = new Vector3(cardObject.transform.localPosition.x, cardObject.transform.localPosition.y, -cardObject.transform.localPosition.x/10f);
+                cardObject.transform.localPosition = new Vector3(cardObject.transform.localPosition.x, cardObject.transform.localPosition.y, -cardObject.transform.localPosition.x/10f - cardObject.transform.localPosition.y/2f);
             } else {
                 Debug.LogError("CardObject component not found on card: " + deckManager.hand[i].name);
             }
         }
     }
+
+
+    /// <summary>
+    /// Sets the positions of the cards in the hand area based on the number of cards and the available space.
+    /// The cards should move to the locations over time, not instantly.
+    /// </summary>
     void SetPositions(){
         positions.Clear();
         int cardCount = deckManager.hand.Count;
@@ -67,9 +75,37 @@ public class CardContainer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Finds the closest card to the mouse position and updates its position.
+    /// If the mouse is above the hand area, reset the closest card index.
+    /// </summary>
+    void PeekClosestCard(){
+        float handAreaCutoff = -1f;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(mousePos.y > handAreaCutoff){
+            closestCardIndex = -1;
+            previousClosestCardIndex = -1;
+            SetPositions();
+            return;
+        }
+        closestCardIndex = -1;
+        float closestDistance = Mathf.Infinity;
+        for(int i = 0; i < positions.Count; i++){
+            float distance = Vector2.Distance(mousePos, positions[i]);
+            if(distance < closestDistance){
+                closestDistance = distance;
+                closestCardIndex = i;
+            }
+        }
+
+        if(closestCardIndex != previousClosestCardIndex){
+            SetPositions();
+            positions[closestCardIndex] = new Vector2(positions[closestCardIndex].x, positions[closestCardIndex].y + 1f);
+            previousClosestCardIndex = closestCardIndex;
+        }
+    }
+
     //to be called from deckmanager when resetting hand and deck
-
-
     public void OnDraw(){
         SetPositions();
     }

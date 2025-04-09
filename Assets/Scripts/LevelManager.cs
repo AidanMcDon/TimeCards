@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Agent : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-
-    public string team = "Player";
+    public Vector2[] zonePositions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -4,12 +4,12 @@ using UnityEngine;
 public enum CardType{
     Unit,
     Spell,
-    Building
+    Augment
 }
 
 public enum AttackType{
-    Melee,
-    Ranged,
+    Projectile,
+    HitScan,
     Magic
 }
 
