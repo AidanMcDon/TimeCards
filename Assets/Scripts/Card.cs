@@ -40,6 +40,10 @@ public class Card : ScriptableObject
     public int cost;
 }
 
+public class AugmentStats{
+    
+}
+
 
 [CreateAssetMenu(fileName = "UnitCard", menuName = "Scriptable Objects/UnitCard")]
 public class UnitCard : Card

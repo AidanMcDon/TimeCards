@@ -3,6 +3,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public Vector2[] zonePositions;
+    private Card heldCard;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +26,20 @@ public class LevelManager : MonoBehaviour
     private GameState gameState = GameState.Paused;
 
     public bool ActivateCard(Card card){
+        //if the game is running then cards cannot be played
+        if (gameState != GameState.Running)
+        {
+            return false;
+        }
+        if (card == null)
+        {
+            return false;
+        }
+
         return true;
     }
+
+
+
+    
 }
