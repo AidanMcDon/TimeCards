@@ -20,4 +20,24 @@ public static class TimeManager
     public static void Unpause(){
         timeScale = lastTimeScale;
     }
+
+    public class WaitForGameSeconds : CustomYieldInstruction
+    {
+        private float elapsed = 0;
+        private float duration;
+        
+        public WaitForGameSeconds(float seconds)
+        {
+            duration = seconds;
+        }
+        
+        public override bool keepWaiting
+        {
+            get
+            {
+                elapsed += DeltaTime;
+                return elapsed < duration;
+            }
+        }
+    }
 }

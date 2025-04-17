@@ -10,6 +10,7 @@ public class DebugScript : MonoBehaviour
     {
         cardContainer = FindFirstObjectByType<CardContainer>();
         deckManager = FindFirstObjectByType<DeckManager>();
+        TimeManager.Pause();
     }
 
     // Update is called once per frame

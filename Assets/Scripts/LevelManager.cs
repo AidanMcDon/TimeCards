@@ -58,6 +58,19 @@ public class LevelManager : MonoBehaviour
         return true;
     }
 
+    public void ActivateEnemyCard(Card card){
+        if (card == null)
+        {
+            return;
+        }
+
+        int zone = Random.Range(0, zonePositions.Length);
+        if(card is UnitCard unitCard){
+            Debug.Log("Playing enemy card: " + unitCard.name);
+            cardPlayer.PlayUnit(unitCard, zonePositions[zone], "Quatzel");
+        }
+    }
+
     void PlacingCard(){
         if(Input.touchCount > 0){
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);

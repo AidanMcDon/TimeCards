@@ -608,6 +608,7 @@ GameObject:
   - component: {fileID: 1486933463}
   - component: {fileID: 1486933462}
   - component: {fileID: 1486933461}
+  - component: {fileID: 1486933464}
   m_Layer: 6
   m_Name: Truck
   m_TagString: Player
@@ -735,6 +736,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1486933464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486933460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e512def2a8027da48b6179da6848c504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: Player
+  health: 0
+  card: {fileID: 0}
 --- !u!1 &1507516651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,6 +1635,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c53a8cd1f3db248968e206a8906b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveFrequency: 5
+  elapsedTime: 0
+  easyCards:
+  - {fileID: 11400000, guid: e48fe77451685fd41b1ad47e08a6427f, type: 2}
+  mediumCards:
+  - {fileID: 11400000, guid: 9bc4204982d691445a2d6ab4fa24d5db, type: 2}
+  hardCards:
+  - {fileID: 11400000, guid: c6160dac152be4b428699f5961d65c2d, type: 2}
+  bossCards: []
+  waves:
+  - waveName: debug
+    easyEnemyCount: 10
+    mediumEnemyCount: 0
+    hardEnemyCount: 0
+    bossEnemyCount: 0
+    delayForNextWave: 5
+    innerWaveDelay: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
